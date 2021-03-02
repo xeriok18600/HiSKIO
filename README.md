@@ -1,20 +1,15 @@
 # HiSKIO
 
-## Build Setup
+[Demo](https://hisiko.netlify.app/)
 
-```bash
-# install dependencies
-$ npm install
+技術規格: Nuxt 2.x , tailwindcss 2.x
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+進度規劃: 
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+ * 3/1 晚上完成 Header
+ * 3/2 晚上完成 登入、加入購物車
+  
+未完成:
 
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+ 1. 產品刪除
+ 2. RWD
