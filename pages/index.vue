@@ -39,24 +39,29 @@
         <!-- 購物車有東西 -->
         <div v-else>
           <div
-            class="grid grid-row-2 grid-flow-col"
+            class="grid grid-row-2 grid-flow-col rounded px-2 border-b pb-2"
             v-for="item in cart"
             :key="item.id"
           >
             <div class="row-span-2">
-              <img :src="item.image" alt="" />
+              <img class="rounded-l" :src="item.image" alt="" />
             </div>
             <div class="col-span-1">
               <div class="text-left">{{ item.name }}</div>
             </div>
-            <div class="row-span-1 col-span-2 flex items-center">
-              <div class="text-left">$ {{ item.total }}</div>
+            <div
+              class="row-span-1 col-span-2 flex justify-between items-center"
+            >
+              <div class="text-left text-lg text-red">$ {{ item.total }}</div>
+              <div class="border rounded p-1 text-sm border-solid">
+                募資課程
+              </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                class="w-6 ml-4 cursor-pointer"
-                @click="deleteCarts(item.id)"
+                class="w-6 ml-4 cursor-pointer text-gray-400"
+                @click="deleteCarts(item)"
               >
                 <path
                   fill-rule="evenodd"
@@ -133,7 +138,7 @@
                   class="process h-10px bg-gray-100 w-full rounded-full relative"
                 >
                   <div
-                    class="done absolute h-full rounded-full z-30"
+                    class="done absolute h-full rounded-full z-1"
                     :style="{
                       width: `${Math.round((item.consumers / 30) * 100)}%`
                     }"
@@ -244,10 +249,12 @@ export default {
     }
   },
   methods: {
+    // 取得募資課程
     async fundraising () {
       const data = await this.$service.fundraising.fundraising()
       this.group = [...data]
     },
+    // 新增購物車
     async addCarts (item) {
       const formData = {
         items: [{ id: item, coupon: '' }],
@@ -256,17 +263,25 @@ export default {
       const { data } = await this.$service.cart.addCarts(formData)
       await this.$store.commit('cart/addCarts', data)
     },
+    // 刪除購物車
     async deleteCarts (item) {
       const formData = {
-        items: [{ id: item, coupon: '' }],
-        coupon: '',
-        pipeline: '',
-        source: ''
+        items: [{ ...item }]
       }
-      const { data } = await this.$service.cart.deleteCarts(formData)
-      await this.$store.commit('cart/addCarts', data)
+      try {
+        await this.$service.cart.deleteCarts({
+          data: formData
+        })
+        const { data } = await this.$service.cart.addCarts({
+          items: [{ id: '', coupon: '' }],
+          coupon: ''
+        })
+        await this.$store.commit('cart/addCarts', data)
+      } catch (error) {
+        alert(error)
+      }
     },
-    cartStatus (item) {},
+    // 關閉購物車清單
     closeCart () {
       this.$store.commit('cart/setShowCart', false)
     }

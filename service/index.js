@@ -14,6 +14,7 @@ export default ({ store, app }, inject) => {
     if (config.method === 'post') {
       config.data = qs.stringify(config.data)
     }
+    console.log(config)
     return config
   })
   /* Response Interceptor */
