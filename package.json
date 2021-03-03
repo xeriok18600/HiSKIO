@@ -6,13 +6,14 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
+    "g": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
     "core-js": "^3.8.3",
+    "dayjs": "^1.10.4",
     "eslint-plugin-prettierx": "^0.17.1",
     "lodash": "^4.17.21",
     "nuxt": "^2.14.12",

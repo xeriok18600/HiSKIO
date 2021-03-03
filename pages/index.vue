@@ -81,10 +81,11 @@
           >
             <div class="card-title relative">
               <img
-                class="rounded-t hover:opacity-50"
+                class="rounded-t relative"
                 :src="item.image"
                 :alt="item.title"
               />
+              <div class="mask"></div>
               <div class="hidden justify-end absolute icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,19 +118,31 @@
               <div class="title text-xl my-2">{{ item.title }}</div>
               <div class="flex items-center">
                 <img class="avatar" :src="item.lecturers[0].avatar" alt="" />
-                <div class="text-gray-400 ml-2">
+                <div class="text-gray-500 ml-2">
                   {{ item.lecturers[0].username }}
                 </div>
               </div>
-              <!-- <div class="flex items-center">
-                <div>剩 {{}}</div>
+              <div class="flex items-center justify-between mt-2">
+                <div class="text-gray-500">剩 {{}} 天</div>
+                <div class="text-gray-500">
+                  已募資 {{ Math.round((item.consumers / 30) * 100) }}%
+                </div>
+              </div>
+              <div class="flex items-center my-2">
+                <div
+                  class="process h-10px bg-gray-100 w-full rounded-full relative"
+                >
+                  <div
+                    class="done absolute h-full rounded-full z-30"
+                    :style="{
+                      width: `${Math.round((item.consumers / 30) * 100)}%`
+                    }"
+                  ></div>
+                </div>
               </div>
               <div class="flex items-center">
-                <div>剩 {{}}</div>
-              </div> -->
-              <div class="flex items-center">
-                <div class="text-xl">${{ item.price }}</div>
-                <div class="text-gray-400 ml-2 line-through">
+                <div class="text-2xl">${{ item.price }}</div>
+                <div class="text-gray-500 ml-2 line-through">
                   ${{ item.fixed_price }}
                 </div>
               </div>
@@ -147,7 +160,25 @@
   border-radius: 100%;
 }
 
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(101, 101, 101, 0.6);
+  opacity: 0;
+}
+
+.done {
+  max-width: 100%;
+  background-color: rgba(232, 93, 93, 1);
+}
+
 .card-title:hover {
+  .mask {
+    opacity: 1;
+  }
   .icon {
     display: flex;
   }

@@ -3,6 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     height: {
+      '10px': '10px',
       '50px': '50px',
       full: '100%'
     },
@@ -19,7 +20,9 @@ module.exports = {
     },
     textColor: {
       primary: '#288fac',
-      'gray-400': '#d9d9d9'
+      'gray-100': '##f5f5f5',
+      'gray-400': '#d9d9d9',
+      'gray-500': '#bfbfbf'
     },
     extend: {}
   },

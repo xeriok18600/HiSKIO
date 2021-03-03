@@ -2,7 +2,7 @@
   <header class="fixed top-0 z-10 w-full bg-white shadow-sm h-50px">
     <div class="flex items-center justify-between h-full mx-auto max-w-1170">
       <div class="flex items-center">
-        <div class="logo">{{ isAuth }}</div>
+        <div class="logo">HiSKIO</div>
         <div class="ml-4 flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
