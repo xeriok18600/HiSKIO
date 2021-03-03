@@ -1,6 +1,7 @@
 <template>
   <div class="min-h-screen pt-50px">
     <Dialog :dialog="dialog" @close="this.dialog = false"></Dialog>
+    <!-- 側邊購物清單 -->
     <div class="cart-list" v-if="showCart">
       <div class="title flex w-full items-center justify-between pt-4">
         <div></div>
@@ -19,13 +20,14 @@
           />
         </svg>
       </div>
-      <div class="content w-full">
+      <div class="content w-full mt-4">
         <!-- 購物車沒東西 -->
         <div v-if="cart.length === 0" class="text-center text-gray-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
+            class="w-3/6 mx-auto"
           >
             <path
               d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
@@ -39,7 +41,7 @@
         <!-- 購物車有東西 -->
         <div v-else>
           <div
-            class="grid grid-row-2 grid-flow-col rounded px-2 border-b pb-2"
+            class="grid grid-row-2 grid-flow-col rounded px-2 border-b pb-2 mb-2"
             v-for="item in cart"
             :key="item.id"
           >
@@ -106,11 +108,12 @@
                     d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
                   />
                 </svg>
+                <!-- 購物車 -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  class="w-6 cursor-pointer"
+                  :class="['w-6', 'cursor-pointer']"
                   @click="addCarts(item.id)"
                 >
                   <path

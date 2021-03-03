@@ -3,7 +3,7 @@
     <div class="modal">
       <div class="flex justify-between items-center mb-8">
         <div></div>
-        <div class="logo text-xl">HiSKIO</div>
+        <div class="logo text-primary text-2xl">Hi</div>
         <div class="cursor-pointer" @click="close">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center">
-        <div class="text-2xl">使用 HiSKIO ID 登入</div>
+        <div class="text-xl">使用 HiSKIO ID 登入</div>
         <div class="input">
           <input
             type="email"
