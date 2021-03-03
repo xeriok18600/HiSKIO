@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen pt-50px">
     <Dialog :dialog="dialog" @close="this.dialog = false"></Dialog>
-    <div class="cart-list">
+    <div class="cart-list" v-if="showCart">
       <div class="title flex w-full items-center justify-between pt-4">
         <div></div>
         <h2>購物車</h2>
@@ -9,7 +9,8 @@
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          class="w-6"
+          class="w-6 cursor-pointer"
+          @click="closeCart"
         >
           <path
             fill-rule="evenodd"
@@ -206,6 +207,9 @@ export default {
   computed: {
     cart () {
       return this.$store.state.cart.cart
+    },
+    showCart () {
+      return this.$store.state.cart.showCart
     }
   },
   methods: {
@@ -231,7 +235,10 @@ export default {
       const { data } = await this.$service.cart.deleteCarts(formData)
       await this.$store.commit('cart/addCarts', data)
     },
-    cartStatus (item) {}
+    cartStatus (item) {},
+    closeCart () {
+      this.$store.commit('cart/setShowCart', false)
+    }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <button @click="action" :class="css">{{ text }}</button>
+  <button @click="action" :class="[css, { block: block }]">{{ text }}</button>
 </template>
 
 <style lang="scss" scoped>
@@ -33,11 +33,15 @@ button:focus {
   border: 1px solid;
   color: #288fac;
 }
+
+.block {
+  width: 100%;
+}
 </style>
 
 <script>
 export default {
-  props: { text: String, type: String, click: Function },
+  props: { text: String, type: String, click: Function, block: Boolean },
   computed: {
     css () {
       return this.type === 'text'

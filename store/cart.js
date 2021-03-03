@@ -1,10 +1,14 @@
 export const state = () => ({
-  cart: []
+  cart: [],
+  showCart: false
 })
 
 export const mutations = {
   addCarts (state, payload) {
     state.cart = [...payload]
+  },
+  setShowCart (state, payload) {
+    state.showCart = payload
   }
 }
 
