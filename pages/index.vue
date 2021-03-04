@@ -78,9 +78,9 @@
     </div>
 
     <div class="container mx-auto max-w-1170">
-      <section class="mt-10">
+      <section class="mt-10 sm:px-0 px-2">
         <div class="title mb-4 text-2xl">正在募資中的課程</div>
-        <div class="grid grid-cols-4 gap-3">
+        <div class="grid sm:grid-cols-4 grid-rows-1 gap-3">
           <div
             class="shadow-md rounded pb-2 hover:shadow-xl"
             v-for="item in group"
@@ -124,12 +124,22 @@
             </div>
             <div class="px-2 bg-white">
               <div class="title text-xl my-2">{{ item.title }}</div>
-              <div class="flex items-center">
-                <img class="avatar" :src="item.lecturers[0].avatar" alt="" />
-                <div class="text-gray-500 ml-2">
-                  {{ item.lecturers[0].username }}
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <img class="avatar" :src="item.lecturers[0].avatar" alt="" />
+                  <div class="text-gray-500 ml-2">
+                    {{ item.lecturers[0].username }}
+                  </div>
+                </div>
+
+                <div class="flex items-center sm:hidden">
+                  <div class="text-2xl">${{ item.price }}</div>
+                  <div class="text-gray-500 ml-2 line-through">
+                    ${{ item.fixed_price }}
+                  </div>
                 </div>
               </div>
+
               <div class="flex items-center justify-between mt-2">
                 <div class="text-gray-500">剩 {{}} 天</div>
                 <div class="text-gray-500">
@@ -148,7 +158,7 @@
                   ></div>
                 </div>
               </div>
-              <div class="flex items-center">
+              <div class="items-center hidden sm:flex">
                 <div class="text-2xl">${{ item.price }}</div>
                 <div class="text-gray-500 ml-2 line-through">
                   ${{ item.fixed_price }}
