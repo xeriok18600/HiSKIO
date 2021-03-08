@@ -2,6 +2,9 @@
 
 [Demo](https://hisiko.netlify.app/)
 
+### 心得
+#### 難得遇到一個蠻喜歡又是遠端工作的職缺，無奈 228 連假是我媽生日，連假出遊無法做開發，只能被刷掉 QQ
+
 技術規格: Nuxt 2.x , tailwindcss 2.x
 
 進度: 
